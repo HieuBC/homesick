@@ -1,6 +1,6 @@
 # Homesick · Trưởng thôn Thành Sơn
 
-Một tựa game của Bùi Chí Hiếu tặng cho quê hương.
+Một tựa game của CrickAI Bui tặng cho quê hương.
 
 **Chơi ngay:** https://hieubc.github.io/homesick/
 
