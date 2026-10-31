@@ -1,0 +1,7 @@
+Muốn dùng nhạc nền của riêng bạn thay cho nhạc ngũ cung tự sinh:
+
+1. Chép file nhạc vào thư mục này và đặt tên đúng là: nhac-nen.mp3
+2. Tải lại trang game.
+
+Game sẽ phát lặp file đó, vẫn bật/tắt bằng nút 🎵 và chỉnh âm lượng trong Cài đặt.
+Xóa file đi thì game quay lại dùng nhạc tự sinh.

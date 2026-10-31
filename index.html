@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <title>Homesick · Trưởng thôn Thành Sơn</title>
+  <meta name="description" content="Game xây dựng thành phố 3D về thôn Thành Sơn, Khánh Hòa. Một tựa game của Bùi Chí Hiếu tặng cho quê hương." />
+  <meta name="theme-color" content="#c8302c" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="icons/favicon-64.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Homesick" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="./assets/index-DnpNEgiS.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BQmusoMj.css">
+</head>
+<body data-mode="start">
+  <div id="app">
+    <!-- ======= HUD BẢN ĐỒ ======= -->
+    <div id="hud">
+      <div id="cityCard" class="card">
+        <button id="menuBtn" class="logo" title="Menu"><i data-icon="close"></i></button>
+        <div class="city-info">
+          <div class="city-line"><span id="tierTag" class="tag">THÔN</span><b id="cityName">THÀNH SƠN</b></div>
+          <div id="tierLine">Lên Xã: 0/4 điều kiện</div>
+          <div class="bar"><i id="tierBar"></i></div>
+        </div>
+      </div>
+      <div id="questCard" class="card clickable"><span class="q-ic"><i data-icon="scroll"></i></span><span id="questText"></span><b id="questProg"></b><span class="chev"><i data-icon="chevron"></i></span></div>
+
+      <div id="statRow">
+        <div class="stat card" id="stMoney" title="Ngân sách (triệu đồng) và thu chi mỗi tháng"><span class="ic"><i data-icon="coin"></i></span><b></b><small></small></div>
+        <div class="stat card" id="stPop" title="Dân số"><span class="ic"><i data-icon="people"></i></span><b></b></div>
+        <div class="stat card" id="stJobs" title="Việc làm / người lao động"><span class="ic"><i data-icon="briefcase"></i></span><b></b><small></small></div>
+        <div class="stat card" id="stHappy" title="Mức hài lòng"><span class="ic"><i data-icon="smile"></i></span><b></b></div>
+        <div class="stat card clickable" id="stBox" title="Hộp mù đang có"><span class="ic"><i data-icon="gift"></i></span><b></b></div>
+      </div>
+
+      <div id="calendar" class="card">
+        <div class="cal-head"><i data-icon="sun"></i> THÁNG</div>
+        <div class="cal-month" id="calMonth">1</div>
+        <div class="cal-year" id="calYear">NĂM 1</div>
+        <div class="cal-event" id="calEvent"></div>
+      </div>
+
+      <button id="rotateBtn" class="rot-btn" title="Xoay công trình (R)"><i data-icon="rotate"></i><span>Xoay</span></button>
+      <button id="menuToggle" class="card" title="Mở menu"><i data-icon="menu"></i></button>
+      <div id="sidebar" class="card">
+        <button data-act="budget" title="Ngân sách & chính sách"><i data-icon="wallet"></i></button>
+        <button data-act="layers" title="Lớp phủ thông tin"><i data-icon="layers"></i></button>
+        <button data-act="walk" title="Đi bộ trong xóm"><i data-icon="walk"></i></button>
+        <button data-act="cinema" title="Chế độ ngắm cảnh"><i data-icon="video"></i></button>
+        <button data-act="sinhhoat" title="Sinh hoạt: trend, hộp mù, mini game"><i data-icon="lantern"></i></button>
+        <button data-act="chat" title="Nhóm chat của xóm"><i data-icon="chat"></i><i class="dot" id="chatDot"></i></button>
+        <button data-act="plane" title="Bám theo máy bay ở sân bay Thành Sơn"><i data-icon="plane"></i></button>
+        <hr />
+        <button data-act="music" id="musicBtn" title="Bật/tắt nhạc nền"></button>
+        <button data-act="help" title="Hướng dẫn"><i data-icon="help"></i></button>
+        <button data-act="settings" title="Cài đặt"><i data-icon="gear"></i></button>
+      </div>
+
+      <div id="infoBar" class="card">
+        <div class="ib" id="ibPower" title="Điện: sản xuất / tiêu thụ"><i data-icon="bolt"></i> <b></b></div>
+        <div class="ib" id="ibWater" title="Nước: cung cấp / tiêu thụ"><i data-icon="drop"></i> <b></b></div>
+        <div class="ib" id="ibTour" title="Du khách mỗi tháng"><i data-icon="camera"></i> <b></b></div>
+        <div class="rci" title="Nhu cầu: Dân cư / Thương mại / Làng nghề / Nông nghiệp">
+          <div><i id="dR"></i><span>D</span></div>
+          <div><i id="dC"></i><span>T</span></div>
+          <div><i id="dI"></i><span>N</span></div>
+          <div><i id="dA"></i><span>Đ</span></div>
+        </div>
+      </div>
+
+      <div id="submenu" class="card"></div>
+      <div id="toolbar"><div class="awning"></div><div class="tools" id="tools"></div></div>
+      <div id="infoPanel" class="card"></div>
+    </div>
+
+    <div id="toasts"></div>
+    <div id="cursorTip"></div>
+    <div id="confetti"></div>
+
+    <div id="modalBg"><div id="modal" class="card"></div></div>
+
+    <div id="chatPanel" class="card">
+      <div class="chat-head">
+        <div class="chat-ava"><i data-icon="home"></i></div>
+        <div><b id="chatTitle">Thôn Thành Sơn Thân Thương</b><small id="chatMembers">12 thành viên</small></div>
+        <button class="btn icon" id="chatClose"><i data-icon="close"></i></button>
+      </div>
+      <div class="chat-list" id="chatList"></div>
+      <div class="chat-chips">
+        <button data-chip="👍 Đã ghi nhận ý kiến bà con!">Ghi nhận</button>
+        <button data-chip="🙏 Cảm ơn bà con đã ủng hộ!">Cảm ơn</button>
+        <button data-chip="meet">Họp đồng hương</button>
+        <button data-chip="lixi">Lì xì</button>
+      </div>
+      <form class="chat-input" id="chatForm"><input id="chatInput" placeholder="Nhắn cho cả xóm..." autocomplete="off" maxlength="200" /><button class="btn primary">Gửi</button></form>
+    </div>
+
+    <!-- ======= ĐI BỘ ======= -->
+    <div id="walkHud">
+      <div class="card walk-title"><button class="logo" id="walkX"><i data-icon="close"></i></button><div><b id="walkTitle"></b><small>Đi bộ trong xóm</small></div></div>
+      <div class="walk-tr"><button class="btn icon" id="walkChat" title="Nhóm chat của thôn"><i data-icon="chat"></i></button><button class="btn icon" id="walkSet"><i data-icon="gear"></i></button><button class="btn" id="walkBack"><i data-icon="map"></i> Về bản đồ</button></div>
+      <div id="walkPrompt" class="card"><kbd>E</kbd><span></span></div>
+      <details class="card walk-help">
+        <summary>Cách điều khiển</summary>
+        <div><kbd>W A S D</kbd> đi lại · <kbd>Shift</kbd> chạy<br /><kbd>Kéo chuột</kbd> xoay góc nhìn · <kbd>Lăn chuột</kbd> gần/xa<br /><kbd>E</kbd> nói chuyện · <kbd>R</kbd> lên/xuống xe máy<br /><kbd>Esc</kbd> về bản đồ</div>
+      </details>
+      <div class="walk-br card"><button class="btn" id="bikeBtn"><i data-icon="bike"></i> Lên xe máy <kbd>R</kbd></button><button class="btn primary" id="talkBtn"><i data-icon="chat"></i> Nói chuyện</button></div>
+      <div id="errandBox" class="card"></div>
+      <div id="dialog" class="card">
+        <div class="d-head"><div class="d-avatar"></div><div><b class="d-name"></b><small class="d-role"></small></div></div>
+        <p class="d-text"></p>
+        <div class="d-opts"></div>
+      </div>
+    </div>
+
+    <!-- ======= NGẮM CẢNH / MÁY BAY ======= -->
+    <div id="cineBar"><b id="cineName"></b><span id="cineDate"></span><button id="cineExit"><i data-icon="close"></i> Thoát</button></div>
+    <div id="planeBar" class="card">
+      <span><i data-icon="plane"></i> Đang bám theo:</span><b id="planeName"></b>
+      <button class="btn" id="planePrev">◀</button><button class="btn" id="planeNext">▶</button>
+      <button class="btn primary" id="planeExit"><i data-icon="close"></i> Thoát</button>
+    </div>
+
+    <div id="minigame"></div>
+
+    <!-- ======= MÀN HÌNH BẮT ĐẦU ======= -->
+    <div id="startScreen">
+      <div class="start-card card">
+        <div class="start-badge">KHÁNH HÒA · TRƯỞNG THÔN THÀNH SƠN</div>
+        <h1>HOMESICK</h1>
+        <p class="start-sub">Bắt đầu từ thôn Thành Sơn nhỏ ven sông Dinh, sát sân bay Thành Sơn, xây lên xã, thị trấn, thị xã rồi thành phố. Trồng nho, dựng quạt gió, trùng tu tháp Chàm, đón máy bay hạ cánh ngay đầu thôn.</p>
+        <label class="start-label">Tên thôn của bạn</label>
+        <input id="startName" value="Thành Sơn" maxlength="24" />
+        <div class="start-btns">
+          <button class="btn primary big" id="startContinue">▶ Chơi tiếp</button>
+          <button class="btn big" id="startNew">✨ Ván mới</button>
+        </div>
+        <button class="btn start-install" id="startInstall"><i data-icon="download"></i> Cài về điện thoại</button>
+        <p class="start-dedication">Một tựa game của <b>Bùi Chí Hiếu</b> tặng cho quê hương nhân Ngày Văn hóa Việt Nam</p>
+        <button class="start-story" id="startStory">Nghe lại câu chuyện</button>
+        <button class="btn big start-showcase" id="startShowcase">Map ra mắt</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
