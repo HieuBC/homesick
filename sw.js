@@ -1,7 +1,7 @@
 // Service worker: lưu game vào máy để mở được cả khi không có mạng.
 // Trang chính lấy bản mới từ mạng trước (để luôn cập nhật), mất mạng thì dùng bản đã lưu;
 // các file js/css/hình/phông chữ lấy bản đã lưu trước rồi cập nhật ngầm.
-const CACHE = 'thanh-son-v28';
+const CACHE = 'thanh-son-v29';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
