@@ -1,7 +1,7 @@
 {
   "name": "Homesick",
   "short_name": "Homesick",
-  "description": "Game xây dựng thành phố 3D về thôn Thành Sơn, Khánh Hòa. Một tựa game của CrickAI Bui tặng cho quê hương.",
+  "description": "Game xây dựng thành phố 3D về thôn Thành Sơn, Khánh Hòa. Một tựa game của Hiếu CB tặng cho quê hương.",
   "lang": "vi",
   "start_url": "./",
   "scope": "./",
